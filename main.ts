@@ -52,18 +52,11 @@ forever(function () {
     mySprite3 = sprites.create(assets.image`Fjende lort`, SpriteKind.Food)
     mySprite3.setVelocity(0, hastighed)
     mySprite3.setPosition(randint(0, 160), 0)
-})
-forever(function () {
-    pause(randint(4000, 6000))
-    mySprite4 = sprites.create(assets.image`Tampon`, SpriteKind.Enemy)
-    mySprite4.setVelocity(0, hastighed)
-    mySprite4.setPosition(randint(0, 160), 0)
-})
-forever(function () {
-    pause(randint(5000, 8000))
-    mySprite5 = sprites.create(assets.image`Toiletpapir`, SpriteKind.Projectile)
-    mySprite5.setVelocity(0, hastighed)
-    mySprite5.setPosition(randint(0, 160), 0)
+    if (info.score() >= 1) {
+        if (info.score() % 10 == 0) {
+            hastighed += 20
+        }
+    }
 })
 forever(function () {
     if (info.score() > 19) {
@@ -446,9 +439,14 @@ forever(function () {
     }
 })
 forever(function () {
-    if (info.score() >= 1) {
-        if (info.score() % 10 == 0) {
-            hastighed += 20
-        }
-    }
+    pause(randint(4000, 6000))
+    mySprite4 = sprites.create(assets.image`Tampon`, SpriteKind.Enemy)
+    mySprite4.setVelocity(0, hastighed)
+    mySprite4.setPosition(randint(0, 160), 0)
+})
+forever(function () {
+    pause(randint(5000, 8000))
+    mySprite5 = sprites.create(assets.image`Toiletpapir`, SpriteKind.Projectile)
+    mySprite5.setVelocity(0, hastighed)
+    mySprite5.setPosition(randint(0, 160), 0)
 })
